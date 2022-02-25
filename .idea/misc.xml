@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/86177/Desktop/xiangceDemo/app/src/main/res/layout/activity_json_show_off_test.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/86177/Desktop/xiangceDemo/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/86177/Desktop/xiangceDemo/app/src/main/res/layout/jsonshowoff.xml" value="0.2046875" />
+        <entry key="..\:/Users/86177/Desktop/xiangceDemo/app/src/main/res/menu/menu_options.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/86177/Desktop/隐私评估安卓开发/app/src/main/res/drawable/edit_background.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/86177/Desktop/隐私评估安卓开发/app/src/main/res/layout/activity_json_show_off_test.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/86177/Desktop/隐私评估安卓开发/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/86177/Desktop/隐私评估安卓开发/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/86177/Desktop/隐私评估安卓开发/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/86177/Desktop/隐私评估安卓开发/app/src/main/res/layout/choosephoti.xml" value="0.259375" />
+        <entry key="..\:/Users/86177/Desktop/隐私评估安卓开发/app/src/main/res/layout/choosephoto.xml" value="0.259375" />
+        <entry key="..\:/Users/86177/Desktop/隐私评估安卓开发/app/src/main/res/menu/menu_options.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Lenovo/Desktop/xiangceDemo/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/android yingshidemo/xiangceDemo/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
