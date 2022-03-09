@@ -1,4 +1,4 @@
-package com.example.xiangcedemo;
+package com.example.隐私评估安卓开发;
 
 import android.content.Intent;
 import android.os.Bundle;

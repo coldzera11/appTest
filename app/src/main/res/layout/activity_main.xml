@@ -4,79 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg_login"
     tools:ignore="MissingConstraints">
 
 
     <Button
         android:id="@+id/choose_photo"
-        android:layout_width="250dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#4A766E"
         android:scaleType="center"
         android:text="从相册中选择照片"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.568" />
 
     <ImageView
         android:id="@+id/picture"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="256dp"
+        android:layout_height="230dp"
         android:layout_marginTop="20dp"
         android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143" />
+        app:layout_constraintVertical_bias="0.935" />
 
     <EditText
         android:id="@+id/et"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="104dp"
+        android:layout_width="279dp"
+        android:layout_height="167dp"
+        android:layout_marginBottom="548dp"
         android:background="@drawable/edit_background"
+        android:backgroundTint="#B0E0E6"
         android:gravity="left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/xinxi"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="165dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="488dp"
+        android:backgroundTint="#4A766E"
         android:text="获取输入信息"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/jsonStringCreat"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="444dp"
+        android:backgroundTint="#4A766E"
         android:text="生成json字符串"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/jiexi"
-        android:layout_width="150dp"
+        android:layout_width="151dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="444dp"
+        android:backgroundTint="#4A766E"
         android:text="解析json字符串"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/xinxi" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

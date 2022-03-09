@@ -1,4 +1,4 @@
-package com.example.xiangcedemo;
+package com.example.隐私评估安卓开发;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         jsonStringCreat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createJsonByMap(text);
+                createJsonByMap();
             }
         });
 
@@ -133,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //创造json字符串
-    public void createJsonByMap(String text) {
-        data.put("xinxi", text);
+    public void createJsonByMap() {
+        data.put("xinxi", "test");
         data.put("name", "张三");
         data.put("age", 22);
         data.put("sex", "male");
