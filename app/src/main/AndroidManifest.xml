@@ -20,22 +20,24 @@
             android:exported="false" />
         <activity
             android:name="com.example.隐私评估安卓开发.login"
+            android:exported="true" />
+        <activity
+            android:name="com.example.隐私评估安卓开发.jsonShowOffTest"
+            android:exported="false"
+            android:label="测试界面"
+            android:parentActivityName="com.example.隐私评估安卓开发.MainActivity" />
+        <activity
+            android:name="com.example.隐私评估安卓开发.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".splashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            />
         </activity>
-        <activity
-            android:name="com.example.隐私评估安卓开发.jsonShowOffTest"
-            android:exported="false"
-            android:label="测试界面"
-            android:parentActivityName="com.example.隐私评估安卓开发.MainActivity"></activity>
-        <activity
-            android:name="com.example.隐私评估安卓开发.MainActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>

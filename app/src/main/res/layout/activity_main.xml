@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/xinxi"
+        android:id="@+id/information"
         android:layout_width="165dp"
         android:layout_height="47dp"
         android:layout_marginBottom="488dp"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/jiexi"
+        android:id="@+id/parse"
         android:layout_width="151dp"
         android:layout_height="40dp"
         android:layout_marginBottom="444dp"
@@ -81,8 +81,8 @@
         android:text="解析json字符串"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/xinxi" />
+        app:layout_constraintHorizontal_bias="1.0"/>
+<!--        app:layout_constraintStart_toEndOf="@+id/xinxi" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

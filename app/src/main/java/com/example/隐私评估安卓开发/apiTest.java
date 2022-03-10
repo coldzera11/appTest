@@ -13,11 +13,9 @@ public class apiTest {
     public static String APP_ID = "76389821";
     public static String APP_SECRET = "9esSbUJz";
 
-
     public static String doGET(String url){
         String result = "";
         BufferedReader reader = null;
-        String bookJSONString = null;
 
         try {
             // 建立连接
@@ -61,8 +59,7 @@ public class apiTest {
         String weatherUrl = BASE_URL+"?"+"appid="+APP_ID+"&"+"appsecret="+APP_SECRET+"&city="+city;
         Log.d("fan","----weatherUrl----"+weatherUrl);
 
-        String weatherResult = doGET(weatherUrl);
-        return weatherResult;
+        return doGET(weatherUrl);
     }
 
 

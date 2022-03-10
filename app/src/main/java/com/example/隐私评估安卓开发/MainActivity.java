@@ -40,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int CHOOSE_PHOTO = 2;
     private EditText et;
-    ImageView picture;
-    String imagePath = null;
-    String text = "";
-    JSONObject obj;
+    private ImageView picture;
+    private String imagePath = null;
+    private String text = "";
+    private JSONObject obj;
 
-    Map<String, Object> data = new HashMap<>();
+    private final Map<String, Object> data = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         et = findViewById(R.id.et);
-        Button xinxi = (Button) findViewById(R.id.xinxi);
-        Button jiexi = (Button) findViewById(R.id.jiexi);
+        Button information = (Button) findViewById(R.id.information);
+        Button parse = (Button) findViewById(R.id.parse);
         Button jsonStringCreat = (Button) findViewById(R.id.jsonStringCreat);
 
-        xinxi.setOnClickListener(new View.OnClickListener() {
+        information.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 text = et.getText().toString();
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        jiexi.setOnClickListener(new View.OnClickListener() {
+        parse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println(obj);
