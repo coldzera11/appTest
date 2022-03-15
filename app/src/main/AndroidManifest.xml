@@ -22,6 +22,9 @@
             android:name="com.example.隐私评估安卓开发.login"
             android:exported="true" />
         <activity
+            android:name="com.example.隐私评估安卓开发.personalSetting"
+            android:exported="false" />
+        <activity
             android:name="com.example.隐私评估安卓开发.jsonShowOffTest"
             android:exported="false"
             android:label="测试界面"
@@ -38,6 +41,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:authorities="com.example.隐私评估安卓开发.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files"/>
+        </provider>
+
     </application>
 
 </manifest>

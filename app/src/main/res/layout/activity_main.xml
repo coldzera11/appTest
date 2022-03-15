@@ -8,22 +8,6 @@
     tools:ignore="MissingConstraints">
 
 
-    <Button
-        android:id="@+id/choose_photo"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#4A766E"
-        android:scaleType="center"
-        android:text="从相册中选择照片"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.568" />
-
     <ImageView
         android:id="@+id/picture"
         android:layout_width="256dp"
@@ -35,13 +19,13 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintVertical_bias="0.821" />
 
     <EditText
         android:id="@+id/et"
         android:layout_width="279dp"
-        android:layout_height="167dp"
-        android:layout_marginBottom="548dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="600dp"
         android:background="@drawable/edit_background"
         android:backgroundTint="#B0E0E6"
         android:gravity="left"
@@ -53,7 +37,7 @@
         android:id="@+id/information"
         android:layout_width="165dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="488dp"
+        android:layout_marginBottom="524dp"
         android:backgroundTint="#4A766E"
         android:text="获取输入信息"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,7 +66,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"/>
-<!--        app:layout_constraintStart_toEndOf="@+id/xinxi" />-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4A766E"
+        android:onClick="takePhoto"
+        android:text="拍照"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#4A766E"
+        android:scaleType="center"
+        android:text="相册"
+        android:onClick="choosePhoto"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.988" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

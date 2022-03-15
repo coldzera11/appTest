@@ -40,7 +40,7 @@ public class jsonShowOffTest extends AppCompatActivity {
         setContentView(R.layout.activity_json_show_off_test);
 
         ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setDisplayHomeAsUpEnabled(true);
+//        supportActionBar.setDisplayHomeAsUpEnabled(true);
 
         Button apiInformation = (Button) findViewById(R.id.apiInformation);
 

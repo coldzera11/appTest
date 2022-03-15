@@ -2,6 +2,7 @@ package com.example.隐私评估安卓开发;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,23 +27,29 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int CHOOSE_PHOTO = 2;
+    private static final int REQUEST_CODE_TAKE = 1;
+    private static final int REQUEST_CODE_CHOOSE = 0;
+    private Uri imageUri;
+    private ImageView ivAvatar;
+
     private EditText et;
-    private ImageView picture;
-    private String imagePath = null;
     private String text = "";
     private JSONObject obj;
 
@@ -52,29 +60,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnChoosePhoto = (Button) findViewById(R.id.choose_photo);
-        picture = (ImageView) findViewById(R.id.picture);
-        picture.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
-        //打开相册选择图片
-        btnChoosePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requestPermissino();
-            }
-        });
-
-
+        ivAvatar = findViewById(R.id.picture);
         et = findViewById(R.id.et);
-        Button information = (Button) findViewById(R.id.information);
-        Button parse = (Button) findViewById(R.id.parse);
-        Button jsonStringCreat = (Button) findViewById(R.id.jsonStringCreat);
+        Button information = findViewById(R.id.information);
+        Button parse = findViewById(R.id.parse);
+        Button jsonStringCreat = findViewById(R.id.jsonStringCreat);
+
 
         information.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 text = et.getText().toString();
-                Log.e("leo", "输入的内容是: "+text);
+                Log.e("TAG", "输入的内容是: "+text);
             }
         });
 
@@ -123,10 +120,13 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.menu_setting:
                 Toast.makeText(this,"点击了设置",+Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, personalSetting.class);
+                startActivity(intent);
+                MainActivity.this.finish();
                 return true;
 
             default:
-
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -138,8 +138,6 @@ public class MainActivity extends AppCompatActivity {
         data.put("name", "张三");
         data.put("age", 22);
         data.put("sex", "male");
-//        data.put("is_student", true);
-//        data.put("hobbies", new String[] {"hiking", "swimming"});
 
         obj = new JSONObject(data);
         System.out.println(obj);
@@ -149,68 +147,103 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void requestPermissino() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        }else {
-            openAlbum();
-        }
+    public void takePhoto(View view) {
+        System.out.println("------------button触发成功------------------");
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+            //执行拍照操作
+            doTake();
 
+        }else{
+            //申请权限
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
+        }
     }
 
-    private void openAlbum(){
-        Log.d("tag","-----------执行了openAlbum");
-        Intent intent = new Intent("android.intent.action.GET_CONTENT");
-        intent.setType("image/*");
-        startActivityForResult(intent,CHOOSE_PHOTO); //打开相册
+    private void doTake() {
+        File imageTemp = new File(getExternalCacheDir(),"imageOut.jpeg");
+        if (imageTemp.exists()){
+            imageTemp.delete();
+        }
+        try {
+            imageTemp.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (Build.VERSION.SDK_INT > 24){
+            imageUri = FileProvider.getUriForFile(this,"com.example.隐私评估安卓开发.fileprovider",imageTemp);
+        }else {
+            imageUri = Uri.fromFile(imageTemp);
+        }
+
+        Intent intent = new Intent();
+        intent.setAction("android.media.action.IMAGE_CAPTURE");
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
+        startActivityForResult(intent,REQUEST_CODE_TAKE);
+
+
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case 1:
-                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    openAlbum();
-                }else {
-                    Toast.makeText(this,"你拒绝了该权限",Toast.LENGTH_SHORT).show();
-                }
-                break;
-            default:
-                break;
+        if (requestCode == 1){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                doTake();
+            }else{
+                Toast.makeText(this,"fail to get the permission for camera",Toast.LENGTH_SHORT).show();
+            }
+        }else if (requestCode == 0){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                openAlbum();
+            }else{
+                Toast.makeText(this,"fail to get the permission for album",Toast.LENGTH_SHORT).show();
+            }
         }
+
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
-            case CHOOSE_PHOTO:
-                if(resultCode == RESULT_OK){
-                    //判断手机系统版本号
-                    if(Build.VERSION.SDK_INT>=13){
-                        //4.1及以上系统使用这个方法处理图片
-                        handleImageOnKitKat(data);
-                    }
+        if (requestCode == REQUEST_CODE_TAKE){
+            if (resultCode == RESULT_OK){
+                //获取拍摄的照片
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    ivAvatar.setImageBitmap(bitmap);
+
+                    String imageToBase64 = imageUtil.imageToBase64(bitmap);
+                    SharedPreferences sp = getSharedPreferences("sp_img",MODE_PRIVATE);  //创建xml文件存储数据，name:创建的xml文件名
+                    SharedPreferences.Editor editor = sp.edit(); //获取edit()
+                    editor.putString("imgPath",imageToBase64);
+                    editor.apply();
+
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
-                break;
-            default:
-                break;
+            }
+        }else if (requestCode == REQUEST_CODE_CHOOSE){
+            handleImageOnApi19(data);
+
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void handleImageOnKitKat(Intent data){
+    @TargetApi(19)
+    private void handleImageOnApi19(Intent data) {
+        String imagePath = null;
         Uri uri = data.getData();
-        if(DocumentsContract.isDocumentUri(this,uri)){
-            //如果是document类型的Uri，则通过document id处理
-            String docId = DocumentsContract.getDocumentId(uri);
-            if("com.android.providers.media.documents".equals(uri.getAuthority())){
-                String id = docId.split(":")[1];  //解析出数字格式的id
-                String selection = MediaStore.Images.Media._ID+"="+id;
+        if (DocumentsContract.isDocumentUri(this,uri)){
+            String documentId = DocumentsContract.getDocumentId(uri);
+            if (TextUtils.equals(uri.getAuthority(),"com.android.providers.media.documents")){
+                String id = documentId.split(":")[1];
+                String selection = MediaStore.Images.Media._ID + "=" + id;
                 imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,selection);
-            }else if("com.android.providers.downloads.documents".equals(uri.getAuthority())){
-                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public downloads"),Long.valueOf(docId));
+
+            }else if (TextUtils.equals(uri.getAuthority(),"com.android.providers.downloads.documents")){
+                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public downloads"),Long.valueOf(documentId));
                 imagePath = getImagePath(contentUri,null);
             }
         }else if("content".equalsIgnoreCase(uri.getScheme())){
@@ -223,35 +256,53 @@ public class MainActivity extends AppCompatActivity {
         displayImage(imagePath); //根据图片路径显示图片
     }
 
-    //将选择的图片Uri转换为路径
     @SuppressLint("Range")
     private String getImagePath(Uri uri, String selection){
+
         String path = null;
-        //通过Uri和selection来获取真实的图片路径
-        Cursor cursor = getContentResolver().query(uri,null,selection,null,null);
-        if(cursor!= null){
-            if(cursor.moveToFirst()){
+        Cursor cursor = getContentResolver().query(uri, null, selection, null, null);
+        if (cursor != null){
+            if (cursor.moveToFirst()){
                 path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
             }
             cursor.close();
         }
-        Log.e("zzz", "getImagePath: "+path);
         return path;
     }
 
-    //展示图片
     private void displayImage(String imagePath){
         if(imagePath!=null && !imagePath.equals("")){
             Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
-            picture.setImageBitmap(bitmap);
-            //存储上次选择的图片路径，用以再次打开app设置图片
+            ivAvatar.setImageBitmap(bitmap);
+
+            String imageToBase64 = imageUtil.imageToBase64(bitmap);
             SharedPreferences sp = getSharedPreferences("sp_img",MODE_PRIVATE);  //创建xml文件存储数据，name:创建的xml文件名
             SharedPreferences.Editor editor = sp.edit(); //获取edit()
-            editor.putString("imgPath",imagePath);
+            editor.putString("imgPath",imageToBase64);
             editor.apply();
-        }else {
-            Toast.makeText(this,"获取图片失败",Toast.LENGTH_SHORT).show();
+
         }
+    }
+
+
+    public void choosePhoto(View view) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+            //打开相册
+            openAlbum();
+
+        }else{
+            //申请权限
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},0);
+        }
+
+
+    }
+
+    private void openAlbum() {
+        Intent intent = new Intent("android.intent.action.GET_CONTENT");
+        intent.setType("image/*");
+        startActivityForResult(intent,REQUEST_CODE_CHOOSE);
+
     }
 
     @Override
@@ -260,8 +311,13 @@ public class MainActivity extends AppCompatActivity {
         //设置再次app时显示的图片
         SharedPreferences sp = getSharedPreferences("sp_img", MODE_PRIVATE);
         //取出上次存储的图片路径设置此次的图片展示
-        String beforeImagePath = sp.getString("imgPath", null);
-        displayImage(beforeImagePath);
+        if (sp.getString("imgPath", null) != null){
+            String beforeImagePath = sp.getString("imgPath", null);
+
+            Bitmap bitmap = imageUtil.base64toImage(beforeImagePath);
+            ivAvatar.setImageBitmap(bitmap);
+        }
+
     }
 
 }
