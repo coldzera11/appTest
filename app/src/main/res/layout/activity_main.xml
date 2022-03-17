@@ -34,12 +34,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/information"
         android:layout_width="165dp"
         android:layout_height="47dp"
         android:layout_marginBottom="524dp"
         android:backgroundTint="#4A766E"
         android:text="获取输入信息"
+        android:onClick="information"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

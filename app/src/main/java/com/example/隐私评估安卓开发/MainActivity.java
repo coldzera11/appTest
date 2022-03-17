@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,10 +33,15 @@ import androidx.core.content.FileProvider;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,18 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
         ivAvatar = findViewById(R.id.picture);
         et = findViewById(R.id.et);
-        Button information = findViewById(R.id.information);
         Button parse = findViewById(R.id.parse);
         Button jsonStringCreat = findViewById(R.id.jsonStringCreat);
-
-
-        information.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                text = et.getText().toString();
-                Log.e("TAG", "输入的内容是: "+text);
-            }
-        });
 
 
         parse.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void takePhoto(View view) {
-        System.out.println("------------button触发成功------------------");
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
             //执行拍照操作
             doTake();
@@ -305,6 +298,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //再次启动程序时恢复上次选中的图片
     @Override
     protected void onResume() {
         super.onResume();
@@ -320,5 +314,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //拿到输入的文本内容并且传输至后端 接收后端处理后的数据
+    public void information(View view) {
+        text = et.getText().toString();
+        new Thread(){
+            @Override
+            public void run() {
+                StringBuffer strBuf = new StringBuffer();
+                String cityName = text;
+                try {
+                    String baiduUrl = "http://1.117.163.15:8080/login?username=coldzera&pwd=" + cityName;
+                    URL url = new URL(baiduUrl);// 根据自己的服务器地址填写
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));// 转码。
+                    String line = null;
+                    while ((line = reader.readLine()) != null)
+                        strBuf.append(line + " ");
+                    reader.close();
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println(strBuf.toString()+"\n");
+            }
+        }.start();
+    }
 }
 
