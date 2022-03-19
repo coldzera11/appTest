@@ -25,7 +25,8 @@
             android:exported="true" />
         <activity
             android:name="com.example.隐私评估安卓开发.personalSetting"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName="com.example.隐私评估安卓开发.MainActivity" />
         <activity
             android:name="com.example.隐私评估安卓开发.jsonShowOffTest"
             android:exported="false"

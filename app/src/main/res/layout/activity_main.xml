@@ -21,11 +21,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.821" />
 
+    <!--    <Button-->
+<!--        android:id="@+id/jsonStringCreat"-->
+<!--        android:layout_width="135dp"-->
+<!--        android:layout_height="43dp"-->
+<!--        android:layout_marginBottom="444dp"-->
+<!--        android:backgroundTint="#4A766E"-->
+<!--        android:text="生成json字符串"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/parse"-->
+<!--        android:layout_width="151dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginBottom="444dp"-->
+<!--        android:backgroundTint="#4A766E"-->
+<!--        android:text="解析json字符串"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"/>-->
+
     <EditText
         android:id="@+id/et"
-        android:layout_width="279dp"
-        android:layout_height="67dp"
-        android:layout_marginBottom="600dp"
+        android:layout_width="297dp"
+        android:layout_height="104dp"
+        android:layout_marginBottom="556dp"
         android:background="@drawable/edit_background"
         android:backgroundTint="#B0E0E6"
         android:gravity="left"
@@ -36,43 +59,22 @@
     <Button
         android:layout_width="165dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="524dp"
+        android:layout_marginBottom="484dp"
         android:backgroundTint="#4A766E"
-        android:text="获取输入信息"
         android:onClick="information"
+        android:text="获取输入信息"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/jsonStringCreat"
-        android:layout_width="135dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="444dp"
-        android:backgroundTint="#4A766E"
-        android:text="生成json字符串"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/parse"
-        android:layout_width="151dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="444dp"
-        android:backgroundTint="#4A766E"
-        android:text="解析json字符串"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:backgroundTint="#4A766E"
         android:onClick="takePhoto"
         android:text="拍照"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.108"

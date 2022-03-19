@@ -19,7 +19,6 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -44,6 +43,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -66,28 +67,28 @@ public class MainActivity extends AppCompatActivity {
 
         ivAvatar = findViewById(R.id.picture);
         et = findViewById(R.id.et);
-        Button parse = findViewById(R.id.parse);
-        Button jsonStringCreat = findViewById(R.id.jsonStringCreat);
+//        Button parse = findViewById(R.id.parse);
+//        Button jsonStringCreat = findViewById(R.id.jsonStringCreat);
 
 
-        parse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println(obj);
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, jsonShowOffTest.class);//从MainActivity页面跳转至jsonShowOffTest页面
-                intent.putExtra("sss",obj.toString());
-                startActivity(intent);
-                MainActivity.this.finish();
-            }
-        });
-
-        jsonStringCreat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createJsonByMap();
-            }
-        });
+//        parse.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                System.out.println(obj);
+//                Intent intent = new Intent();
+//                intent.setClass(MainActivity.this, jsonShowOffTest.class);//从MainActivity页面跳转至jsonShowOffTest页面
+//                intent.putExtra("sss",obj.toString());
+//                startActivity(intent);
+//                MainActivity.this.finish();
+//            }
+//        });
+//
+//        jsonStringCreat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                createJsonByMap();
+//            }
+//        });
 
     }
 
@@ -329,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));// 转码。
                     String line = null;
                     while ((line = reader.readLine()) != null)
-                        strBuf.append(line + " ");
+                        strBuf.append(line + "\n");
                     reader.close();
 
                 } catch (MalformedURLException e) {
@@ -338,7 +339,42 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                System.out.println(strBuf.toString()+"\n");
+                String value = strBuf.toString();
+                // 匹配规则
+                String reg = "<td>(.*)</td>";
+                Pattern pattern = Pattern.compile(reg);
+
+                // 内容 与 匹配规则 的测试
+                Matcher matcher = pattern.matcher(value);
+
+                String outBI = "";
+                String outLOC = "";
+                String outJOB = "";
+                String outEDU = "";
+
+                if( matcher.find() ){
+                    // 包含前后的两个字符
+//            System.out.println(matcher.group());
+                    // 不包含前后的两个字符
+                    outBI = matcher.group(1);
+                    System.out.println(matcher.group(1));
+                }
+                if( matcher.find() ){
+                    outLOC = matcher.group(1);
+                    System.out.println(matcher.group(1));
+                }
+                if( matcher.find() ){
+                    outJOB = matcher.group(1);
+                    System.out.println(matcher.group(1));
+                }
+                if( matcher.find() ){
+                    outEDU = matcher.group(1);
+                    System.out.println(matcher.group(1));
+                }
+                et.setText("outBI: " + outBI + "\n"
+                        + "outLOC:" + outLOC + "\n"
+                        + "outJOB:" + outJOB + "\n"
+                        + "outEDU:" + outEDU + "\n");
             }
         }.start();
     }
