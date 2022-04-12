@@ -7,9 +7,11 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText et;
     private String text = "";
     private JSONObject obj;
+    private TextView textView1;
+    private TextView textView2;
 
     private final Map<String, Object> data = new HashMap<>();
 
@@ -67,6 +72,15 @@ public class MainActivity extends AppCompatActivity {
 
         ivAvatar = findViewById(R.id.picture);
         et = findViewById(R.id.et);
+        textView1 = findViewById(R.id.textview1);
+        textView2 = findViewById(R.id.textview2);
+
+        AssetManager mgr = getAssets();
+        Typeface tf = Typeface.createFromAsset(mgr, "fonts/ThePeakFontBeta_V0_101.ttf");
+
+        textView1.setTypeface(tf);
+        textView2.setTypeface(tf);
+
     }
 
 

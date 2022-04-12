@@ -9,9 +9,10 @@
 
 
     <TextView
+        android:id="@+id/textview1"
         android:layout_width="158dp"
         android:layout_height="33dp"
-        android:text="用文字抒发感悟~"
+        android:text="用文字抒写感悟~"
         android:textColor="#126C16"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,6 +62,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/textview2"
         android:layout_width="158dp"
         android:layout_height="33dp"
         android:text="用照片记录生活~"
