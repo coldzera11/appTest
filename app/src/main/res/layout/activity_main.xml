@@ -8,6 +8,19 @@
     tools:ignore="MissingConstraints">
 
 
+    <TextView
+        android:layout_width="158dp"
+        android:layout_height="33dp"
+        android:text="用文字抒发感悟~"
+        android:textColor="#126C16"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.055" />
+
     <ImageView
         android:id="@+id/picture"
         android:layout_width="256dp"
@@ -21,37 +34,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.821" />
 
-    <!--    <Button-->
-<!--        android:id="@+id/jsonStringCreat"-->
-<!--        android:layout_width="135dp"-->
-<!--        android:layout_height="43dp"-->
-<!--        android:layout_marginBottom="444dp"-->
-<!--        android:backgroundTint="#4A766E"-->
-<!--        android:text="生成json字符串"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/parse"-->
-<!--        android:layout_width="151dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginBottom="444dp"-->
-<!--        android:backgroundTint="#4A766E"-->
-<!--        android:text="解析json字符串"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"/>-->
-
     <EditText
         android:id="@+id/et"
         android:layout_width="297dp"
         android:layout_height="104dp"
-        android:layout_marginBottom="556dp"
+        android:layout_marginBottom="484dp"
         android:background="@drawable/edit_background"
         android:backgroundTint="#B0E0E6"
         android:gravity="left"
+        android:hint="我想说...."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -59,25 +50,39 @@
     <Button
         android:layout_width="165dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="484dp"
-        android:backgroundTint="#4A766E"
+        android:layout_marginBottom="416dp"
+        android:background="@drawable/button_circle_shape"
         android:onClick="information"
-        android:text="获取输入信息"
+        android:text="上传"
+        app:icon="@drawable/ic_baseline_bookmark_border_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="158dp"
+        android:layout_height="33dp"
+        android:text="用照片记录生活~"
+        android:textColor="#126C16"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:background="@drawable/button_circle_shape"
         android:backgroundTint="#4A766E"
         android:onClick="takePhoto"
         android:text="拍照"
-        android:textSize="20sp"
+        android:textSize="15sp"
+        app:icon="@drawable/ic_baseline_photo_camera_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.989" />
@@ -90,7 +95,9 @@
         android:scaleType="center"
         android:text="相册"
         android:onClick="choosePhoto"
-        android:textSize="20sp"
+        android:textSize="15sp"
+        android:background="@drawable/button_circle_shape"
+        app:icon="@drawable/ic_baseline_photo_album_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.92"

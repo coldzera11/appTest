@@ -67,29 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         ivAvatar = findViewById(R.id.picture);
         et = findViewById(R.id.et);
-//        Button parse = findViewById(R.id.parse);
-//        Button jsonStringCreat = findViewById(R.id.jsonStringCreat);
-
-
-//        parse.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.out.println(obj);
-//                Intent intent = new Intent();
-//                intent.setClass(MainActivity.this, jsonShowOffTest.class);//从MainActivity页面跳转至jsonShowOffTest页面
-//                intent.putExtra("sss",obj.toString());
-//                startActivity(intent);
-//                MainActivity.this.finish();
-//            }
-//        });
-//
-//        jsonStringCreat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                createJsonByMap();
-//            }
-//        });
-
     }
 
 
