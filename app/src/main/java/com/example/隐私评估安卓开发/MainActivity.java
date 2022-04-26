@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView1;
     private TextView textView2;
 
+    private String outBI = "";
+    private String outLOC = "";
+    private String outJOB = "";
+    private String outEDU = "";
+
     private final Map<String, Object> data = new HashMap<>();
 
     @Override
@@ -338,11 +343,6 @@ public class MainActivity extends AppCompatActivity {
                 // 内容 与 匹配规则 的测试
                 Matcher matcher = pattern.matcher(value);
 
-                String outBI = "";
-                String outLOC = "";
-                String outJOB = "";
-                String outEDU = "";
-
                 if( matcher.find() ){
                     // 包含前后的两个字符
 //            System.out.println(matcher.group());
@@ -362,12 +362,12 @@ public class MainActivity extends AppCompatActivity {
                     outEDU = matcher.group(1);
                     System.out.println(matcher.group(1));
                 }
-                et.setText("outBI: " + outBI + "\n"
-                        + "outLOC:" + outLOC + "\n"
-                        + "outJOB:" + outJOB + "\n"
-                        + "outEDU:" + outEDU + "\n");
             }
         }.start();
+        Toast.makeText(getApplicationContext(), "outBI: " + outBI + "\n"
+                + "outLOC:" + outLOC + "\n"
+                + "outJOB:" + outJOB + "\n"
+                + "outEDU:" + outEDU + "\n", Toast.LENGTH_SHORT).show();
     }
 }
 

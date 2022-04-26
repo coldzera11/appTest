@@ -10,10 +10,10 @@
 
     <TextView
         android:id="@+id/textview1"
-        android:layout_width="158dp"
-        android:layout_height="33dp"
-        android:text="用文字抒写感悟~"
-        android:textColor="#126C16"
+        android:layout_width="323dp"
+        android:layout_height="55dp"
+        android:text="Do not linger to gather flowers to keep them"
+        android:textColor="#10597A"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,51 +22,51 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.055" />
 
-    <ImageView
+    <com.example.隐私评估安卓开发.RoundImageView
         android:id="@+id/picture"
-        android:layout_width="256dp"
-        android:layout_height="230dp"
+        android:layout_width="143dp"
+        android:layout_height="146dp"
         android:layout_marginTop="20dp"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.767"
+        app:type="circle" />
 
     <EditText
         android:id="@+id/et"
-        android:layout_width="297dp"
-        android:layout_height="104dp"
-        android:layout_marginBottom="484dp"
-        android:background="@drawable/edit_background"
-        android:backgroundTint="#B0E0E6"
-        android:gravity="left"
-        android:hint="我想说...."
+        android:layout_width="111dp"
+        android:layout_height="143dp"
+        android:layout_marginBottom="448dp"
+        android:background="@mipmap/note"
+        android:gravity="center"
+        android:hint="I Wanna Say..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:layout_width="165dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="416dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="492dp"
         android:background="@drawable/button_circle_shape"
         android:onClick="information"
-        android:text="上传"
+        android:text="UPLOAD"
         app:icon="@drawable/ic_baseline_bookmark_border_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.854"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textview2"
-        android:layout_width="158dp"
-        android:layout_height="33dp"
-        android:text="用照片记录生活~"
-        android:textColor="#126C16"
+        android:layout_width="321dp"
+        android:layout_height="60dp"
+        android:text="But walk on, for flowers will keep themselves blooming all your way"
+        android:textColor="#10597A"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,12 +74,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:background="@drawable/button_circle_shape"
         android:backgroundTint="#4A766E"
         android:onClick="takePhoto"
-        android:text="拍照"
+        android:text="CAMERA"
         android:textSize="15sp"
         app:icon="@drawable/ic_baseline_photo_camera_24"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -90,12 +90,12 @@
         app:layout_constraintVertical_bias="0.989" />
 
     <Button
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:backgroundTint="#4A766E"
         android:scaleType="center"
-        android:text="相册"
+        android:text="ALBUM"
         android:onClick="choosePhoto"
         android:textSize="15sp"
         android:background="@drawable/button_circle_shape"
