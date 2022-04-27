@@ -123,21 +123,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //创造json字符串
-    public void createJsonByMap() {
-        data.put("xinxi", "test");
-        data.put("name", "张三");
-        data.put("age", 22);
-        data.put("sex", "male");
-
-        obj = new JSONObject(data);
-        System.out.println(obj);
-        String result = obj.optString("name");
-        System.out.println(result);
-
-    }
-
-
     public void takePhoto(View view) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
             //执行拍照操作
